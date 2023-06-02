@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -40,5 +42,19 @@ public class PlotCrop extends BaseEntity {
 
     @Column(name = "cultivated_area")
     private BigDecimal cultivatedArea;
+
+    @OneToMany(mappedBy = "plotCrop", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private List<PlotIrrigationSlot> plotIrrigationSlots = new ArrayList<>();
+
+
+    public void addPlotIrrigationSlot(PlotIrrigationSlot plotIrrigationSlot) {
+        plotIrrigationSlots.add(plotIrrigationSlot);
+        plotIrrigationSlot.setPlotCrop(this);
+    }
+
+    public void removePlotIrrigationSlot(PlotIrrigationSlot plotIrrigationSlot) {
+        plotIrrigationSlots.remove(plotIrrigationSlot);
+        plotIrrigationSlot.setPlotCrop(null);
+    }
 
 }

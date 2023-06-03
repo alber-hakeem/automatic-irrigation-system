@@ -2,23 +2,31 @@ package com.digitalfactory.plotirrigationservice.service;
 
 import com.digitalfactory.automaticirrigationsystem.enums.IrrigationStatus;
 import com.digitalfactory.plotirrigationservice.dao.PlotIrrigationSlotDao;
-import com.digitalfactory.plotirrigationservice.dto.PlotDto;
 import com.digitalfactory.plotirrigationservice.model.PlotIrrigationSlot;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
 @Slf4j
 public class SensorServiceImpl implements SensorService {
 
-    private static final int MAX_RETRY_ATTEMPTS = 3;
-    private static final int RETRY_DELAY_MS = 2000;
+//    private static final int MAX_RETRY_ATTEMPTS = 3;
+//    private static final int RETRY_DELAY_MS = 2000;
+
+    @Value("${retry.max.attempts}")
+    private int retryMaxAttempts;
+
+    @Value("${retry.delay.ms}")
+    private int retryDelayMs;
 
     private final PlotIrrigationSlotDao plotIrrigationSlotDao;
     private final NotificationService notificationService;
 
+    public SensorServiceImpl(PlotIrrigationSlotDao plotIrrigationSlotDao, NotificationService notificationService) {
+        this.plotIrrigationSlotDao = plotIrrigationSlotDao;
+        this.notificationService = notificationService;
+    }
 
 
     @Override
@@ -38,7 +46,7 @@ public class SensorServiceImpl implements SensorService {
 
     private boolean sendRequestToSensorDevice(PlotIrrigationSlot plotIrrigationSlot) {
         log.info("SensorService: sendRequestToSensorDevice was called");
-        return true;
+        return false;
         // Integration code to send the irrigation request to the sensor device
         // Return true if the request is successful, false otherwise
     }
@@ -48,9 +56,9 @@ public class SensorServiceImpl implements SensorService {
         int retryCount = 0;
         boolean requestSuccessful = false;
 
-        while (!requestSuccessful && retryCount < MAX_RETRY_ATTEMPTS) {
+        while (!requestSuccessful && retryCount < retryMaxAttempts) {
             try {
-                Thread.sleep(RETRY_DELAY_MS);
+                Thread.sleep(retryDelayMs);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }

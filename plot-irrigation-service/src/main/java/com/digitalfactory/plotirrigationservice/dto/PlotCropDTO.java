@@ -17,11 +17,9 @@ import java.util.List;
 public class PlotCropDTO extends BaseDto {
 
     @NotNull(message = "This field is required")
-    @JsonIgnore
     private Long plotId;
 
     @NotNull(message = "This field is required")
-    @JsonIgnore
     private Long cropId;
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
@@ -40,7 +38,7 @@ public class PlotCropDTO extends BaseDto {
         return endDate == null || endDate.isAfter(startDate);
     }
 
-    @NotNull(message = "this field is required")
+    @NotNull(message = "This field is required")
     @DecimalMin(value = "1", message = "minimum area is 1")
     private BigDecimal cultivatedArea;
 

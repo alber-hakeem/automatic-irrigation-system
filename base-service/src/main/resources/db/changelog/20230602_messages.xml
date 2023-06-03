@@ -112,6 +112,20 @@
             <column name="lang" value="EN"/>
             <column name="type" value="BACK_END"/>
         </insert>
+        <insert tableName="locale_message">
+            <column name="code" value="REQUEST_SUCCESS"/>
+            <column name="module" value="CORE"/>
+            <column name="message" value="Success!"/>
+            <column name="lang" value="EN"/>
+            <column name="type" value="BACK_END"/>
+        </insert>
+        <insert tableName="locale_message">
+            <column name="code" value="REQUEST_FAILED"/>
+            <column name="module" value="CORE"/>
+            <column name="message" value="Failed!"/>
+            <column name="lang" value="EN"/>
+            <column name="type" value="BACK_END"/>
+        </insert>
 
     </changeSet>
 

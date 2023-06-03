@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
@@ -24,7 +25,7 @@ public class PlotController implements BaseController<PlotService, PlotDto> {
         return getApiResponseBuilder().buildApiSuccessResponse(getService().create(plotDto));
     }
     @PutMapping("/{id}")
-    public ApiResponse<PlotDto> update(@PathVariable Long id,@Valid @RequestBody PlotDto plotDto) {
+    public ApiResponse<PlotDto> update(@NotNull @PathVariable Long id, @Valid @RequestBody PlotDto plotDto) {
         return getApiResponseBuilder().buildApiSuccessResponse(getService().update(plotDto,id));
     }
     @GetMapping
@@ -32,7 +33,7 @@ public class PlotController implements BaseController<PlotService, PlotDto> {
         return getApiResponseBuilder().buildApiSuccessResponse(getService().findAll());
     }
     @GetMapping("/{id}")
-    public ApiResponse<PlotDto> findById(@PathVariable Long id){
+    public ApiResponse<PlotDto> findById(@NotNull @PathVariable Long id){
         return getApiResponseBuilder().buildApiSuccessResponse(getService().findById(id));
     }
     @Override

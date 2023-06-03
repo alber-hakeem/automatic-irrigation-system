@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
@@ -22,7 +23,7 @@ public class CropController implements BaseController<CropService, CropDto> {
         return getApiResponseBuilder().buildApiSuccessResponse(getService().create(cropDto));
     }
     @PutMapping("/{id}")
-    public ApiResponse<CropDto> update(@PathVariable Long id,@Valid @RequestBody CropDto cropDto) {
+    public ApiResponse<CropDto> update(@NotNull  @PathVariable Long id, @Valid @RequestBody CropDto cropDto) {
         return getApiResponseBuilder().buildApiSuccessResponse(getService().update(cropDto,id));
     }
     @GetMapping
@@ -30,7 +31,7 @@ public class CropController implements BaseController<CropService, CropDto> {
         return getApiResponseBuilder().buildApiSuccessResponse(getService().findAll());
     }
     @GetMapping("/{id}")
-    public ApiResponse<CropDto> findById(@PathVariable Long id){
+    public ApiResponse<CropDto> findById(@NotNull @PathVariable Long id){
         return getApiResponseBuilder().buildApiSuccessResponse(getService().findById(id));
     }
     @Override

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 
@@ -33,7 +33,7 @@ public class PlotIrrigationSlot extends BaseEntity {
 
 
     @Column(name="irrigation_date")
-    private LocalDateTime irrigationDate;
+    private LocalDate irrigationDate;
 
     @Column(name="irrigation_start_time")
     private LocalTime irrigationStartTime;

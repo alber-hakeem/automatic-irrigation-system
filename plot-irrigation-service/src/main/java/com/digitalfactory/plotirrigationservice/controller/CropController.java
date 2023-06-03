@@ -17,7 +17,6 @@ import java.util.List;
 public class CropController implements BaseController<CropService, CropDto> {
     private final CropService cropService;
     private final ApiResponseBuilder apiResponseBuilder;
-
     @PostMapping
     public ApiResponse<CropDto> create(@Valid @RequestBody CropDto cropDto) {
         return getApiResponseBuilder().buildApiSuccessResponse(getService().create(cropDto));

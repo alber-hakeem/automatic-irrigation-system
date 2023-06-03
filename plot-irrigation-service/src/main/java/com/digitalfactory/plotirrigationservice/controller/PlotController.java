@@ -19,8 +19,6 @@ public class PlotController implements BaseController<PlotService, PlotDto> {
 
     private final PlotService plotService;
     private final ApiResponseBuilder apiResponseBuilder;
-
-
     @PostMapping
     public ApiResponse<PlotDto> create(@Valid @RequestBody PlotDto plotDto) {
         return getApiResponseBuilder().buildApiSuccessResponse(getService().create(plotDto));

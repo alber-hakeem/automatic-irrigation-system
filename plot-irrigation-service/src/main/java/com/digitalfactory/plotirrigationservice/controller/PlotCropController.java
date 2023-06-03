@@ -5,7 +5,6 @@ import com.digitalfactory.baseservice.api.response.ApiResponse;
 import com.digitalfactory.baseservice.api.response.ApiResponseBuilder;
 import com.digitalfactory.baseservice.controller.BaseController;
 import com.digitalfactory.plotirrigationservice.dto.PlotCropDTO;
-import com.digitalfactory.plotirrigationservice.dto.PlotDto;
 import com.digitalfactory.plotirrigationservice.service.PlotCropService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;

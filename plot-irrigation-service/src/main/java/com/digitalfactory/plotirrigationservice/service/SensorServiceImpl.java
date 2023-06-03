@@ -11,9 +11,6 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class SensorServiceImpl implements SensorService {
 
-//    private static final int MAX_RETRY_ATTEMPTS = 3;
-//    private static final int RETRY_DELAY_MS = 2000;
-
     @Value("${retry.max.attempts}")
     private int retryMaxAttempts;
 

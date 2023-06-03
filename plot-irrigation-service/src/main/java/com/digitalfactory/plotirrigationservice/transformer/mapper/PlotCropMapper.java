@@ -8,6 +8,6 @@ import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR,
-        config = MapStructCentralConfig.class)
+        config = MapStructCentralConfig.class,uses = {PlotMapper.class,CropMapper.class})
 public interface PlotCropMapper extends BaseMapper<PlotCrop, PlotCropDTO> {
 }

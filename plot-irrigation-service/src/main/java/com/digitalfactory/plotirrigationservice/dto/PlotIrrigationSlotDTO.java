@@ -1,6 +1,7 @@
 package com.digitalfactory.plotirrigationservice.dto;
 
 import com.digitalfactory.automaticirrigationsystem.enums.IrrigationStatus;
+import com.digitalfactory.baseservice.dto.BaseDto;
 import lombok.Data;
 
 import javax.validation.constraints.AssertTrue;
@@ -13,7 +14,9 @@ import java.time.LocalTime;
 
 
 @Data
-public class PlotIrrigationSlotDTO {
+public class PlotIrrigationSlotDTO extends BaseDto {
+
+    private Long plotCropId;
 
     @Future(message = "Irrigation date must be in the future")
     private LocalDate irrigationDate;

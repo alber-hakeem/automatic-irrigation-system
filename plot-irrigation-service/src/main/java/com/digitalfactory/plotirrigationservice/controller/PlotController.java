@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("api/plot")
-public class PlotController implements BaseController<PlotService, PlotDto> {
+public class PlotController implements BaseController<PlotService> {
 
     private final PlotService plotService;
     private final ApiResponseBuilder apiResponseBuilder;

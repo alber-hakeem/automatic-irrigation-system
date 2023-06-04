@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("api/crop")
-public class CropController implements BaseController<CropService, CropDto> {
+public class CropController implements BaseController<CropService> {
     private final CropService cropService;
     private final ApiResponseBuilder apiResponseBuilder;
     @PostMapping

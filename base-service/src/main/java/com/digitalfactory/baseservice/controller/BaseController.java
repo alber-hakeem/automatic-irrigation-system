@@ -5,7 +5,7 @@ import com.digitalfactory.baseservice.api.response.ApiResponseBuilder;
 import com.digitalfactory.baseservice.dto.BaseDto;
 import com.digitalfactory.baseservice.service.BaseService;
 
-public interface BaseController<Service extends BaseService,Dto extends BaseDto> {
+public interface BaseController<Service extends BaseService> {
     /**
      * Service to be used by the controller
      * @return

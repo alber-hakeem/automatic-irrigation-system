@@ -2,6 +2,7 @@ package com.digitalfactory.plotirrigationservice.dao;
 
 import com.digitalfactory.automaticirrigationsystem.enums.IrrigationStatus;
 import com.digitalfactory.plotirrigationservice.dao.repo.PlotIrrigationSlotRepo;
+import com.digitalfactory.plotirrigationservice.dto.PlotIrrigationSlotDTO;
 import com.digitalfactory.plotirrigationservice.model.PlotIrrigationSlot;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -22,5 +23,9 @@ public class PlotIrrigationSlotDaoImpl implements PlotIrrigationSlotDao{
     @Override
     public List<PlotIrrigationSlot> findActiveIrrigationSlots() {
         return plotIrrigationSlotRepo.findSlotsByDateAndTimeAndStatus(LocalTime.now(), LocalDate.now(), IrrigationStatus.PENDING);
+    }
+    public Boolean isPlotIrrigationSlotExists(PlotIrrigationSlotDTO irrigationSlotDto) {
+        return getRepository().findCountPerCropAndSlots(irrigationSlotDto.getPlotCropId(), irrigationSlotDto.getIrrigationDate(),
+                irrigationSlotDto.getIrrigationStartTime(), irrigationSlotDto.getIrrigationEndTime())>0;
     }
 }

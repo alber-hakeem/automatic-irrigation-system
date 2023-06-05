@@ -17,4 +17,16 @@ public interface PlotIrrigationSlotRepo extends JpaRepository<PlotIrrigationSlot
             "AND ps.irrigationEndTime AND ps.irrigationDate = :currentDay AND ps.irrigationStatus = :irrigationStatus")
     List<PlotIrrigationSlot> findSlotsByDateAndTimeAndStatus(LocalTime currentTime, LocalDate currentDay,IrrigationStatus irrigationStatus);
 
+    @Query("SELECT  COUNT(pis) " +
+            "FROM PlotIrrigationSlot pis " +
+            "WHERE pis.plotCrop.id = :plotCropId " +
+            "AND pis.irrigationDate = :irrigationDate " +
+            "AND (" +
+            "     pis.irrigationStartTime BETWEEN :irrigationStartTime AND :irrigationEndTime " +
+            "     OR pis.irrigationEndTime BETWEEN :irrigationStartTime AND :irrigationEndTime " +
+            "     OR (pis.irrigationStartTime <= :irrigationStartTime AND pis.irrigationEndTime >= :irrigationEndTime)" +
+            ")" +
+            "AND pis.markedAsDeleted = false ")
+    Integer findCountPerCropAndSlots(Long plotCropId, LocalDate irrigationDate, LocalTime irrigationStartTime, LocalTime irrigationEndTime);
+
 }

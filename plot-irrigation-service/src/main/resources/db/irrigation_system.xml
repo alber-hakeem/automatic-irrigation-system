@@ -9,4 +9,5 @@
     <include file="db/changelog/20230602_crop_table_and_seq.sql"/>
     <include file="db/changelog/20230602_plot_crop_table_and_seq.sql"/>
     <include file="db/changelog/20230602_plot_irrigation_slot_table_and_seq.sql"/>
+    <include file="db/changelog/20230605_insert_data.sql"/>
 </databaseChangeLog>

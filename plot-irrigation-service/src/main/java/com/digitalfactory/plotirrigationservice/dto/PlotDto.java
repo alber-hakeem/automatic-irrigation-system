@@ -1,6 +1,7 @@
 package com.digitalfactory.plotirrigationservice.dto;
 
 import com.digitalfactory.baseservice.dto.BaseDto;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -12,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
 import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -61,6 +62,7 @@ public interface BaseService<Entity extends BaseEntity, Dto extends BaseDto, Tra
         return savedDEntities;
     }
 
+    @Transactional
     default Dto create(Dto dto) {
         Entity savedDEntity = doCreate(dto);
         return (Dto) getTransformer().transformEntityToDTO(savedDEntity);
@@ -77,11 +79,13 @@ public interface BaseService<Entity extends BaseEntity, Dto extends BaseDto, Tra
         return savedDEntity;
     }
 
+    @Transactional
     default Dto update(Dto dto, Long id) {
         Entity savedDEntity = doUpdate(dto, id);
         return (Dto) getTransformer().transformEntityToDTO(savedDEntity);
     }
 
+    @Transactional
     default List<Dto> create(List<Dto> dtos) {
         List<Entity> savedDEntities = doCreate(dtos);
         return (List<Dto>) getTransformer().transformEntityToDTO(savedDEntities);

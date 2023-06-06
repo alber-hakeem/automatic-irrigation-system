@@ -16,14 +16,16 @@ import java.time.LocalTime;
 
 
 @Data
-public class PlotIrrigationSlotDTO extends BaseDto {
+public class PlotIrrigationSlotDto extends BaseDto {
+
+    private Long id;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Long plotCropId;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private PlotCropDTO plotCrop;
+//    @JsonInclude(JsonInclude.Include.NON_NULL)
+//    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+//    private PlotCropDto plotCrop;
 
     @Future(message = "Irrigation date must be in the future")
     private LocalDate irrigationDate;

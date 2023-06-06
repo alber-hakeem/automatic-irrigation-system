@@ -1,7 +1,7 @@
 package com.digitalfactory.plotirrigationservice.validator;
 
 import com.digitalfactory.plotirrigationservice.dao.PlotIrrigationSlotDao;
-import com.digitalfactory.plotirrigationservice.dto.PlotIrrigationSlotDTO;
+import com.digitalfactory.plotirrigationservice.dto.PlotIrrigationSlotDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ public class PlotIrrigationSlotValidatorImpl implements PlotIrrigationSlotValida
     private final PlotIrrigationSlotDao plotIrrigationSlotDao;
 
     @Override
-    public Boolean isExists(PlotIrrigationSlotDTO irrigationSlotDto) {
+    public Boolean isExists(PlotIrrigationSlotDto irrigationSlotDto) {
         return plotIrrigationSlotDao.isPlotIrrigationSlotExists(irrigationSlotDto);
     }
 }

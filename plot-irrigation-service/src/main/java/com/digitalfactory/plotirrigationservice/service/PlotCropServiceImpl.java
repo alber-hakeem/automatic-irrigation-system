@@ -3,7 +3,7 @@ package com.digitalfactory.plotirrigationservice.service;
 import com.digitalfactory.automaticirrigationsystem.enums.IrrigationStatus;
 import com.digitalfactory.baseservice.service.MessageService;
 import com.digitalfactory.plotirrigationservice.dao.PlotCropDao;
-import com.digitalfactory.plotirrigationservice.dto.PlotCropDTO;
+import com.digitalfactory.plotirrigationservice.dto.PlotCropDto;
 import com.digitalfactory.plotirrigationservice.model.PlotCrop;
 import com.digitalfactory.plotirrigationservice.transformer.PlotCropTransformer;
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ public class PlotCropServiceImpl implements PlotCropService{
     private final PlotService plotService;
 
     @Override
-    public PlotCrop doBeforeCreateEntity(PlotCrop plotCrop, PlotCropDTO plotCropDTO) {
+    public PlotCrop doBeforeCreateEntity(PlotCrop plotCrop, PlotCropDto plotCropDTO) {
 
         plotCrop.setCrop(cropService.findEntityById(plotCropDTO.getCropId()).get());
         plotCrop.setPlot(plotService.findEntityById(plotCropDTO.getPlotId()).get());

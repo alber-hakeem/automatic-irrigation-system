@@ -1,7 +1,6 @@
 package com.digitalfactory.plotirrigationservice.dto;
 
 import com.digitalfactory.baseservice.dto.BaseDto;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -14,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-public class PlotCropDTO extends BaseDto {
+public class PlotCropDto extends BaseDto {
 
     private Long id;
 
@@ -44,5 +43,5 @@ public class PlotCropDTO extends BaseDto {
     @DecimalMin(value = "1", message = "minimum area is 1")
     private BigDecimal cultivatedArea;
 
-    private List<PlotIrrigationSlotDTO> plotIrrigationSlots;
+    private List<PlotIrrigationSlotDto> plotIrrigationSlots;
 }

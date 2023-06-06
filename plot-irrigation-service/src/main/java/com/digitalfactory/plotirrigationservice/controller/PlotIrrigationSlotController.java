@@ -3,9 +3,8 @@ package com.digitalfactory.plotirrigationservice.controller;
 import com.digitalfactory.baseservice.api.response.ApiResponse;
 import com.digitalfactory.baseservice.api.response.ApiResponseBuilder;
 import com.digitalfactory.baseservice.controller.BaseController;
-import com.digitalfactory.plotirrigationservice.dto.CreatePlotIrrigationSlotDto;
 import com.digitalfactory.plotirrigationservice.dto.PlotDto;
-import com.digitalfactory.plotirrigationservice.dto.PlotIrrigationSlotDTO;
+import com.digitalfactory.plotirrigationservice.dto.PlotIrrigationSlotDto;
 import com.digitalfactory.plotirrigationservice.service.PlotIrrigationSlotService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +24,7 @@ public class PlotIrrigationSlotController implements BaseController<PlotIrrigati
 
 
     @PostMapping
-    public ApiResponse<PlotDto> create(@Valid @RequestBody PlotIrrigationSlotDTO plotIrrigationSlotDTO) {
+    public ApiResponse<PlotDto> create(@Valid @RequestBody PlotIrrigationSlotDto plotIrrigationSlotDTO) {
         return getApiResponseBuilder().buildApiSuccessResponse(getService().create(plotIrrigationSlotDTO));
     }
     @Override

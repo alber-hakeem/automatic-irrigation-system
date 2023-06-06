@@ -1,6 +1,7 @@
 package com.digitalfactory.plotirrigationservice.dto;
 
 import com.digitalfactory.baseservice.dto.BaseDto;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -17,15 +18,19 @@ public class PlotCropDto extends BaseDto {
 
     private Long id;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @NotNull(message = "This field is required")
     private Long plotId;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @NotNull(message = "This field is required")
     private Long cropId;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private PlotDto plot;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private CropDto crop;
 
@@ -43,5 +48,6 @@ public class PlotCropDto extends BaseDto {
     @DecimalMin(value = "1", message = "minimum area is 1")
     private BigDecimal cultivatedArea;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<PlotIrrigationSlotDto> plotIrrigationSlots;
 }

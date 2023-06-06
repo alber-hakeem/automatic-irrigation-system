@@ -16,6 +16,8 @@ import java.util.List;
 @Data
 public class PlotCropDTO extends BaseDto {
 
+    private Long id;
+
     @NotNull(message = "This field is required")
     private Long plotId;
 

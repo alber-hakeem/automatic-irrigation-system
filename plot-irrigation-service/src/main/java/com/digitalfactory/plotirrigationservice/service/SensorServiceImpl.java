@@ -26,6 +26,7 @@ public class SensorServiceImpl implements SensorService {
     }
 
 
+
     @Override
     public void sendIrrigationRequest(PlotIrrigationSlot plotIrrigationSlot) {
         log.info("SensorService: sendIrrigationRequest was called");
@@ -41,11 +42,17 @@ public class SensorServiceImpl implements SensorService {
 
 
 
+    /**
+     * sendRequestToSensorDevice
+     *
+     * Integration code to send the irrigation request to the sensor device.
+     * Return true if the request is successful, false otherwise.
+     * If you want to simulate the failure situation change it to return false
+     */
+
     private boolean sendRequestToSensorDevice(PlotIrrigationSlot plotIrrigationSlot) {
         log.info("SensorService: sendRequestToSensorDevice was called");
-        return false;
-        // Integration code to send the irrigation request to the sensor device
-        // Return true if the request is successful, false otherwise
+        return true;
     }
 
     private void retrySendingRequest(PlotIrrigationSlot plotIrrigationSlot) {

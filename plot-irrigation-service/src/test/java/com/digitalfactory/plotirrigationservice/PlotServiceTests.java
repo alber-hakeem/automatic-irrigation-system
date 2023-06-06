@@ -21,52 +21,45 @@ import static org.mockito.Mockito.*;
 
 @SpringBootTest(classes = {PlotIrrigationServiceApplication.class})
 public class PlotServiceTests {
-
-
     @MockBean
     private PlotDao plotDao;
-
-//    @MockBean
-//    private PlotTransformer plotTransformer;
-
-
     @Autowired
     private PlotService plotService;
 
-
-
     @Test
-    public void testFindAllPlots() {
-        PlotDto plot1 = new PlotDto(1L,"Plot 1",BigDecimal.valueOf(500),"");
-        PlotDto plot2 = new PlotDto(2L,"Plot 2",BigDecimal.valueOf(500),"");
+    public void findAllPlots_OutputPlotDtoList() {
+        Plot plot1 = new Plot(1L,"Plot1",BigDecimal.valueOf(500),"");
+        Plot plot2 = new Plot(2L,"Plot2",BigDecimal.valueOf(500),"");
 
-        List<PlotDto> mockPlots = Arrays.asList(plot1, plot2);
+        List<Plot> plots = Arrays.asList(plot1, plot2);
 
-        when(plotService.findAll()).thenReturn(mockPlots);
+        when(plotDao.findAll()).thenReturn(plots);
 
-        List<PlotDto> plots = plotService.findAll();
-        assertEquals(2, plots.size());
-        assertEquals("Plot 1", plots.get(0).getName());
-        assertEquals("Plot 2", plots.get(1).getName());
+        List<PlotDto> result = plotService.findAll();
+        assertEquals(2, result.size());
+        assertEquals("Plot1", result.get(0).getName());
+        assertEquals("Plot2", result.get(1).getName());
 
-        verify(plotDao, times(2)).findAll();
+        verify(plotDao, times(1)).findAll();
     }
 
     @Test
-    public void testFindPlotById() {
-        Plot plot = new Plot(1L, "Plot 3", BigDecimal.valueOf(500),"");
-        PlotDto plotDto = new PlotDto(1L, "Plot 3", BigDecimal.valueOf(500),"");
+    public void findById_OutputPlotDto() {
+        Plot plot = new Plot();
+        plot.setId(1L);
+        plot.setName("Plot1");
+        PlotDto plotDto = plotService.getTransformer().transformEntityToDTO(plot);
 
-        when(plotDao.findById(1L)).thenReturn(Optional.of(plot));
-        when(plotService.findById(1L)).thenReturn(plotDto);
+        when(plotDao.findById(any())).thenReturn(Optional.of(plot));
 
         PlotDto result = plotService.findById(1L);
+
         assertEquals(plotDto, result);
-        verify(plotDao, times(2)).findById(1L);
+        verify(plotDao, times(1)).findById(1L);
     }
 
     @Test
-    public void testCreatePlot() {
+    public void createPlot_InputPlotDto_OutputPlotDto() {
         PlotDto toBeCreatedPlotDto = new PlotDto();
         toBeCreatedPlotDto.setName("Plot 1");
         toBeCreatedPlotDto.setArea(new BigDecimal(200));
@@ -77,10 +70,7 @@ public class PlotServiceTests {
         PlotDto plotDto = plotService.create(toBeCreatedPlotDto);
         assertInstanceOf(PlotDto.class, plotDto);
         assertEquals(shouldBeCreatedPlot.getName(), plotDto.getName());
-
-        // VERIFY
         verify(plotDao, times(1)).create((Plot) any());
-
     }
 
 }

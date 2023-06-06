@@ -1,3 +1,11 @@
+/**
+ * Scheduler Service
+ *
+ * This service should be implemented as a standalone service and run as a multithreaded application.
+ * It is responsible for scheduling and executing tasks at specific times or intervals.
+ * The multithreaded nature allows for concurrent execution of scheduled tasks, improving performance
+ * and responsiveness.
+ */
 package com.digitalfactory.plotirrigationservice.service;
 
 
@@ -15,7 +23,6 @@ import java.util.List;
 @Slf4j
 @AllArgsConstructor
 @Component
-
 public class SchedulerService {
     private final PlotIrrigationSlotDao plotIrrigationSlotDao;
     private final SensorService sensorService;

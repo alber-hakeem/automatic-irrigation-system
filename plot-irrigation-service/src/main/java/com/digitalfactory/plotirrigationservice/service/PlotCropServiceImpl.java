@@ -7,10 +7,12 @@ import com.digitalfactory.plotirrigationservice.dto.PlotCropDto;
 import com.digitalfactory.plotirrigationservice.model.PlotCrop;
 import com.digitalfactory.plotirrigationservice.transformer.PlotCropTransformer;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class PlotCropServiceImpl implements PlotCropService{
 
     private final PlotCropTransformer plotCropTransformer;
@@ -21,6 +23,7 @@ public class PlotCropServiceImpl implements PlotCropService{
 
     @Override
     public PlotCrop doBeforeCreateEntity(PlotCrop plotCrop, PlotCropDto plotCropDTO) {
+        log.info("PlotCropService: doBeforeCreateEntity was called");
 
         plotCrop.setCrop(cropService.findEntityById(plotCropDTO.getCropId()).get());
         plotCrop.setPlot(plotService.findEntityById(plotCropDTO.getPlotId()).get());

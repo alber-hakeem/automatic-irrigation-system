@@ -83,6 +83,8 @@ public class SensorServiceImpl implements SensorService {
     }
 
     private void updateIrrigationStatus(PlotIrrigationSlot plotIrrigationSlot,IrrigationStatus irrigationStatus) {
+        log.info("SensorService: updateIrrigationStatus was called");
+
         plotIrrigationSlot.setIrrigationStatus(irrigationStatus);
         plotIrrigationSlotDao.update(plotIrrigationSlot);
     }

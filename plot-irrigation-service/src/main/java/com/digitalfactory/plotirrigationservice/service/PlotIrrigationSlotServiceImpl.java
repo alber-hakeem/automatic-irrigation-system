@@ -34,6 +34,7 @@ public class PlotIrrigationSlotServiceImpl implements PlotIrrigationSlotService{
 
     @Override
     public PlotIrrigationSlot doBeforeCreateEntity(PlotIrrigationSlot entity, PlotIrrigationSlotDto dto) {
+        log.info("PlotIrrigationSlotService: doBeforeCreateEntity was called");
         entity.setPlotCrop(plotCropService.findEntityById(dto.getPlotCropId()).get());
         entity.setIrrigationStatus(IrrigationStatus.PENDING);
         if (plotIrrigationSlotValidator.isExists(dto)) {
@@ -45,7 +46,7 @@ public class PlotIrrigationSlotServiceImpl implements PlotIrrigationSlotService{
     @Override
     @Transactional
     public List<PlotIrrigationSlotDto> updateIrrigationSlots(Long plotCropId, Set<PlotIrrigationSlotDto> plotIrrigationSlotDTOS) {
-        log.info("PlotSlotService updatePlotSlots(Long,Set<PlotSlotDto>)");
+        log.info("PlotIrrigationSlotService: updateIrrigationSlots was called");
         PlotCropDto plotCropDto = plotCropService.findById(plotCropId);
         plotIrrigationSlotDTOS.forEach(plotIrrigationSlotDTO -> {
             plotIrrigationSlotDTO.setPlotCropId(plotCropDto.getId());
@@ -60,6 +61,8 @@ public class PlotIrrigationSlotServiceImpl implements PlotIrrigationSlotService{
 
 
     private void removeSlot(PlotIrrigationSlotDto plotIrrigationSlotDTO) {
+        log.info("PlotIrrigationSlotService: removeSlot was called");
+
         plotIrrigationSlotDTO.setMarkedAsDeleted(true);
         update(plotIrrigationSlotDTO, plotIrrigationSlotDTO.getId());
     }

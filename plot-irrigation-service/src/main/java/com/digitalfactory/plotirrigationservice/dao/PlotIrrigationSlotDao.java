@@ -13,6 +13,8 @@ public interface PlotIrrigationSlotDao extends BaseDao<PlotIrrigationSlot, PlotI
     List<PlotIrrigationSlot> findActiveIrrigationSlots();
     Boolean isPlotIrrigationSlotExists(PlotIrrigationSlotDto irrigationSlotDto);
 
+    List<PlotIrrigationSlot> findAllByPlotCropId(Long plotCropId);
+
 
 
 }

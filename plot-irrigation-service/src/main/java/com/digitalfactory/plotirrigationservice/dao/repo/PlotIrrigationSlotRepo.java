@@ -29,4 +29,7 @@ public interface PlotIrrigationSlotRepo extends JpaRepository<PlotIrrigationSlot
             "AND pis.markedAsDeleted = false ")
     Integer findCountPerCropAndSlots(Long plotCropId, LocalDate irrigationDate, LocalTime irrigationStartTime, LocalTime irrigationEndTime);
 
+    List<PlotIrrigationSlot> findAllByPlotCropIdAndMarkedAsDeletedFalse(Long plotCropId);
+
+
 }

@@ -66,6 +66,11 @@ public class PlotIrrigationSlotServiceImpl implements PlotIrrigationSlotService{
         plotIrrigationSlotDTO.setMarkedAsDeleted(true);
         update(plotIrrigationSlotDTO, plotIrrigationSlotDTO.getId());
     }
+
+    @Override
+    public List<PlotIrrigationSlotDto> findAllByPlotCropId(Long plotCropId) {
+        return getTransformer().transformEntityToDTO(getDao().findAllByPlotCropId(plotCropId));
+    }
     @Override
     public PlotIrrigationSlotTransformer getTransformer() {
         return plotIrrigationSlotTransformer;

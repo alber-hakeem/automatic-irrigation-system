@@ -13,4 +13,7 @@ import java.util.Set;
 public interface PlotIrrigationSlotService extends BaseService<PlotIrrigationSlot, PlotIrrigationSlotDto, PlotIrrigationSlotTransformer, PlotIrrigationSlotDao> {
 
     List<PlotIrrigationSlotDto> updateIrrigationSlots(Long plotId, Set<PlotIrrigationSlotDto> plotSlotDtos);
+
+    List<PlotIrrigationSlotDto> findAllByPlotCropId(Long plotCropId);
+
 }

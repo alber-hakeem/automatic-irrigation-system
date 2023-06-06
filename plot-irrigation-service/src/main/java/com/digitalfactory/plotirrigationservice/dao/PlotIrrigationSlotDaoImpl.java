@@ -28,4 +28,8 @@ public class PlotIrrigationSlotDaoImpl implements PlotIrrigationSlotDao{
         return getRepository().findCountPerCropAndSlots(irrigationSlotDto.getPlotCropId(), irrigationSlotDto.getIrrigationDate(),
                 irrigationSlotDto.getIrrigationStartTime(), irrigationSlotDto.getIrrigationEndTime())>0;
     }
+    @Override
+    public List<PlotIrrigationSlot> findAllByPlotCropId(Long plotCropId) {
+        return getRepository().findAllByPlotCropIdAndMarkedAsDeletedFalse(plotCropId);
+    }
 }

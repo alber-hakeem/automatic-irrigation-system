@@ -37,6 +37,7 @@ public class PlotIrrigationSlotController implements BaseController<PlotIrrigati
         return getApiResponseBuilder().buildApiSuccessResponse(getService().update(plotIrrigationSlotDto, id));
     }
 
+
     @Override
     public PlotIrrigationSlotService getService() {
         return plotIrrigationSlotService;

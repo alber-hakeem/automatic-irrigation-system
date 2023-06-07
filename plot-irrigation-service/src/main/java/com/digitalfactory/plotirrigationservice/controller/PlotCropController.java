@@ -7,6 +7,7 @@ import com.digitalfactory.baseservice.api.response.ApiResponseBuilder;
 import com.digitalfactory.baseservice.api.response.PaginationResponse;
 import com.digitalfactory.baseservice.controller.BaseController;
 import com.digitalfactory.plotirrigationservice.dto.PlotCropDto;
+import com.digitalfactory.plotirrigationservice.dto.PlotDto;
 import com.digitalfactory.plotirrigationservice.service.PlotCropService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +24,14 @@ public class PlotCropController implements BaseController<PlotCropService> {
     private final PlotCropService plotCropService;
     private final ApiResponseBuilder apiResponseBuilder;
     @PostMapping
-    public ApiResponse<PlotCropDto> create(@Valid @RequestBody PlotCropDto plotCropDTO) {
-        return getApiResponseBuilder().buildApiSuccessResponse(getService().create(plotCropDTO));
+    public ApiResponse<PlotCropDto> create(@Valid @RequestBody PlotCropDto plotCropDto) {
+        return getApiResponseBuilder().buildApiSuccessResponse(getService().create(plotCropDto));
     }
 
+    @PutMapping("/{id}")
+    public ApiResponse<PlotDto> update(@NotNull @PathVariable Long id, @Valid @RequestBody PlotCropDto plotCropDto) {
+        return getApiResponseBuilder().buildApiSuccessResponse(getService().update(plotCropDto,id));
+    }
     @GetMapping
     public ApiResponse<List<PlotCropDto>> findAll(){
         return getApiResponseBuilder().buildApiSuccessResponse(getService().findAll());

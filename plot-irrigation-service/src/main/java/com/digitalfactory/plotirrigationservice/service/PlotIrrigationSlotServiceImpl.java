@@ -9,6 +9,7 @@ import com.digitalfactory.plotirrigationservice.transformer.PlotIrrigationSlotTr
 import com.digitalfactory.plotirrigationservice.validator.PlotIrrigationSlotValidator;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityExistsException;
@@ -21,7 +22,6 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-@AllArgsConstructor
 @Slf4j
 public class PlotIrrigationSlotServiceImpl implements PlotIrrigationSlotService{
 
@@ -31,7 +31,15 @@ public class PlotIrrigationSlotServiceImpl implements PlotIrrigationSlotService{
     private final PlotIrrigationSlotValidator plotIrrigationSlotValidator;
     private final MessageService messageService;
 
-
+    public PlotIrrigationSlotServiceImpl(PlotIrrigationSlotTransformer plotIrrigationSlotTransformer,
+                                         PlotIrrigationSlotDao plotIrrigationSlotDao, @Lazy PlotCropService plotCropService,
+                                         PlotIrrigationSlotValidator plotIrrigationSlotValidator, MessageService messageService) {
+        this.plotIrrigationSlotTransformer = plotIrrigationSlotTransformer;
+        this.plotIrrigationSlotDao = plotIrrigationSlotDao;
+        this.plotCropService = plotCropService;
+        this.plotIrrigationSlotValidator = plotIrrigationSlotValidator;
+        this.messageService = messageService;
+    }
     @Override
     public PlotIrrigationSlot doBeforeCreateEntity(PlotIrrigationSlot entity, PlotIrrigationSlotDto dto) {
         log.info("PlotIrrigationSlotService: doBeforeCreateEntity was called");

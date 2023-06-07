@@ -34,6 +34,12 @@ public class PlotCrop extends BaseEntity {
     @JoinColumn(name = "crop_id", nullable = false)
     private Crop crop;
 
+    @Column(name = "plot_id", updatable = false, insertable = false)
+    private Long plotId;
+
+    @Column(name = "crop_id", updatable = false, insertable = false)
+    private Long cropId;
+
     @Column(name = "start_date")
     private LocalDateTime startDate;
 

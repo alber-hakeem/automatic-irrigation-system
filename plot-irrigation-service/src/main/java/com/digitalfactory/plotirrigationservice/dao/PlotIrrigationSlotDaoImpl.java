@@ -32,4 +32,9 @@ public class PlotIrrigationSlotDaoImpl implements PlotIrrigationSlotDao{
     public List<PlotIrrigationSlot> findAllByPlotCropId(Long plotCropId) {
         return getRepository().findAllByPlotCropIdAndMarkedAsDeletedFalse(plotCropId);
     }
+    @Override
+    public Boolean isPlotIrrigationSlotExistsExcludeId(PlotIrrigationSlotDto irrigationSlotDto) {
+        return getRepository().findCountPerCropAndSlotsExcludeId(irrigationSlotDto.getId(), irrigationSlotDto.getPlotCropId(), irrigationSlotDto.getIrrigationDate(),
+                irrigationSlotDto.getIrrigationStartTime(), irrigationSlotDto.getIrrigationEndTime()) > 0;
+    }
 }

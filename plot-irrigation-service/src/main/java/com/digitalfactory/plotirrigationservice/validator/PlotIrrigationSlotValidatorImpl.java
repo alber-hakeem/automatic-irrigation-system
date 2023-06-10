@@ -14,4 +14,9 @@ public class PlotIrrigationSlotValidatorImpl implements PlotIrrigationSlotValida
     public Boolean isExists(PlotIrrigationSlotDto irrigationSlotDto) {
         return plotIrrigationSlotDao.isPlotIrrigationSlotExists(irrigationSlotDto);
     }
+
+    @Override
+    public Boolean isExistsExcludeId(PlotIrrigationSlotDto irrigationSlotDto) {
+        return plotIrrigationSlotDao.isPlotIrrigationSlotExistsExcludeId(irrigationSlotDto);
+    }
 }

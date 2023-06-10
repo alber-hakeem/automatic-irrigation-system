@@ -25,4 +25,9 @@ public interface PlotIrrigationSlotMapper extends BaseMapper<PlotIrrigationSlot,
     @IterableMapping(qualifiedByName = "mapWithoutPlotCrop")
     List<PlotIrrigationSlotDto> mapListWithoutPlotCrop(List<PlotIrrigationSlot> entities);
 
+    @Override
+    @Mapping(target = "plotCrop", ignore = true)
+    void updateEntity(PlotIrrigationSlotDto dto, @MappingTarget PlotIrrigationSlot entity);
+
+
 }

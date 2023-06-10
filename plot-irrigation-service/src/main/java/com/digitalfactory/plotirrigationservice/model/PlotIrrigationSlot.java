@@ -31,6 +31,8 @@ public class PlotIrrigationSlot extends BaseEntity {
     @JoinColumn(name = "plot_crop_id")
     private PlotCrop plotCrop;
 
+    @Column(name="plot_crop_id", updatable = false, insertable = false)
+    private Long plotCropId;
 
     @Column(name="irrigation_date")
     private LocalDate irrigationDate;

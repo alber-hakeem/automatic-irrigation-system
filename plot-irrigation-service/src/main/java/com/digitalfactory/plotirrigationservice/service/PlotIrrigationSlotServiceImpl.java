@@ -19,7 +19,9 @@ import com.digitalfactory.automaticirrigationsystem.enums.IrrigationStatus;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -52,6 +54,15 @@ public class PlotIrrigationSlotServiceImpl implements PlotIrrigationSlotService{
     }
 
     @Override
+    public PlotIrrigationSlot doBeforeUpdateEntity(PlotIrrigationSlot entity, PlotIrrigationSlotDto dto) {
+        dto.setPlotCropId(entity.getPlotCropId());
+        if (plotIrrigationSlotValidator.isExistsExcludeId(dto)) {
+            throw new EntityExistsException("Plot Irrigation slot already assigned at this time.");
+        }
+        return entity;
+    }
+
+    @Override
     @Transactional
     public List<PlotIrrigationSlotDto> updateIrrigationSlots(Long plotCropId, Set<PlotIrrigationSlotDto> plotIrrigationSlotDTOS) {
         log.info("PlotIrrigationSlotService: updateIrrigationSlots was called");
@@ -62,10 +73,11 @@ public class PlotIrrigationSlotServiceImpl implements PlotIrrigationSlotService{
                 update(plotIrrigationSlotDTO, plotIrrigationSlotDTO.getId());
             else create(plotIrrigationSlotDTO);
         });
-        plotCropDto.getPlotIrrigationSlots().stream().filter(dto -> !plotIrrigationSlotDTOS.contains(dto)).forEach(this::removeSlot);
+        plotCropDto.getPlotIrrigationSlots().stream()
+                .filter(dto -> plotIrrigationSlotDTOS.stream().noneMatch(dto2 -> Objects.equals(dto2.getId(), dto.getId())))
+                .collect(Collectors.toList()).stream().forEach(this::removeSlot);
         return new ArrayList<>(plotIrrigationSlotDTOS);
     }
-
 
 
     private void removeSlot(PlotIrrigationSlotDto plotIrrigationSlotDTO) {

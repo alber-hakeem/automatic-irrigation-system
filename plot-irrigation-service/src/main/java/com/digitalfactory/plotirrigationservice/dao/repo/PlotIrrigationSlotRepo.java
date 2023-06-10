@@ -29,6 +29,19 @@ public interface PlotIrrigationSlotRepo extends JpaRepository<PlotIrrigationSlot
             "AND pis.markedAsDeleted = false ")
     Integer findCountPerCropAndSlots(Long plotCropId, LocalDate irrigationDate, LocalTime irrigationStartTime, LocalTime irrigationEndTime);
 
+    @Query("SELECT  COUNT(pis) " +
+            "FROM PlotIrrigationSlot pis " +
+            "WHERE pis.id != :plotIrrigationSlotId " +
+            "AND pis.plotCrop.id = :plotCropId " +
+            "AND pis.irrigationDate = :irrigationDate " +
+            "AND (" +
+            "     pis.irrigationStartTime BETWEEN :irrigationStartTime AND :irrigationEndTime " +
+            "     OR pis.irrigationEndTime BETWEEN :irrigationStartTime AND :irrigationEndTime " +
+            "     OR (pis.irrigationStartTime <= :irrigationStartTime AND pis.irrigationEndTime >= :irrigationEndTime)" +
+            ")" +
+            "AND pis.markedAsDeleted = false ")
+    Integer findCountPerCropAndSlotsExcludeId(Long plotIrrigationSlotId, Long plotCropId, LocalDate irrigationDate, LocalTime irrigationStartTime, LocalTime irrigationEndTime);
+
     List<PlotIrrigationSlot> findAllByPlotCropIdAndMarkedAsDeletedFalse(Long plotCropId);
 
 

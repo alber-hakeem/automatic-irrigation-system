@@ -21,7 +21,8 @@ CREATE TABLE IF NOT EXISTS public.plot
     created_by character varying(100),
     modified_by character varying(100),
     marked_as_deleted boolean   default false,
-    CONSTRAINT plot_pkey PRIMARY KEY (id)
+    CONSTRAINT plot_pkey PRIMARY KEY (id),
+    CONSTRAINT unique_plot_name_constraint UNIQUE (name)
 )
     TABLESPACE pg_default;
 

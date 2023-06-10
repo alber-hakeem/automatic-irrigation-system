@@ -45,9 +45,7 @@ public class PlotServiceTests {
 
     @Test
     public void findById_OutputPlotDto() {
-        Plot plot = new Plot();
-        plot.setId(1L);
-        plot.setName("Plot1");
+        Plot plot = new Plot(1L,"Plot1",BigDecimal.valueOf(500),"");
         PlotDto plotDto = plotService.getTransformer().transformEntityToDTO(plot);
 
         when(plotDao.findById(any())).thenReturn(Optional.of(plot));

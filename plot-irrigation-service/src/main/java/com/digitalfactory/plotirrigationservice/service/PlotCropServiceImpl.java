@@ -2,6 +2,7 @@ package com.digitalfactory.plotirrigationservice.service;
 
 import com.digitalfactory.automaticirrigationsystem.enums.IrrigationStatus;
 import com.digitalfactory.baseservice.service.MessageService;
+import com.digitalfactory.baseservice.util.CoreMessageConstants;
 import com.digitalfactory.plotirrigationservice.dao.PlotCropDao;
 import com.digitalfactory.plotirrigationservice.dto.PlotCropDto;
 import com.digitalfactory.plotirrigationservice.dto.PlotIrrigationSlotDto;
@@ -33,7 +34,7 @@ public class PlotCropServiceImpl implements PlotCropService{
         log.info("PlotCropService: doBeforeCreateEntity was called");
 
         if (plotCropValidator.isExists(plotCropDto)) {
-            throw new EntityExistsException("Plot Crop already assigned at this period.");
+            throw new EntityExistsException(getLocaleMessage(CoreMessageConstants.CROP_ALREADY_ASSIGNED));
         }
         plotCrop.setCrop(cropService.findEntityById(plotCropDto.getCropId()).get());
         plotCrop.setPlot(plotService.findEntityById(plotCropDto.getPlotId()).get());
@@ -49,7 +50,7 @@ public class PlotCropServiceImpl implements PlotCropService{
         dto.setPlotId(entity.getPlotId());
         dto.setCropId(entity.getCropId());
         if (plotCropValidator.isExistsExcludeId(dto)) {
-            throw new EntityExistsException("Plot Crop already assigned at this period.");
+            throw new EntityExistsException(getLocaleMessage(CoreMessageConstants.CROP_ALREADY_ASSIGNED));
         }
         return entity;
     }

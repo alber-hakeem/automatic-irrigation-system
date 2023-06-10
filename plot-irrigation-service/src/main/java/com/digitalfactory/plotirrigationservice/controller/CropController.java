@@ -1,7 +1,9 @@
 package com.digitalfactory.plotirrigationservice.controller;
 
+import com.digitalfactory.baseservice.api.request.PaginationRequest;
 import com.digitalfactory.baseservice.api.response.ApiResponse;
 import com.digitalfactory.baseservice.api.response.ApiResponseBuilder;
+import com.digitalfactory.baseservice.api.response.PaginationResponse;
 import com.digitalfactory.baseservice.controller.BaseController;
 import com.digitalfactory.plotirrigationservice.dto.CropDto;
 import com.digitalfactory.plotirrigationservice.service.CropService;
@@ -29,6 +31,10 @@ public class CropController implements BaseController<CropService> {
     @GetMapping
     public ApiResponse<List<CropDto>> findAll(){
         return getApiResponseBuilder().buildApiSuccessResponse(getService().findAll());
+    }
+    @PostMapping("/find-all-paginated")
+    public ApiResponse<PaginationResponse<CropDto>> findAll(@RequestBody PaginationRequest paginationRequest) {
+        return getApiResponseBuilder().buildApiSuccessResponse(getService().findAll(paginationRequest));
     }
     @GetMapping("/{id}")
     public ApiResponse<CropDto> findById(@NotNull @PathVariable Long id){

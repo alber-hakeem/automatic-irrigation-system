@@ -126,6 +126,28 @@
             <column name="lang" value="EN"/>
             <column name="type" value="BACK_END"/>
         </insert>
+        <insert tableName="locale_message">
+            <column name="code" value="ITEM_ALREADY_EXIST"/>
+            <column name="module" value="CORE"/>
+            <column name="message" value="This item is already exist"/>
+            <column name="lang" value="EN"/>
+            <column name="type" value="BACK_END"/>
+        </insert>
+        <insert tableName="locale_message">
+            <column name="code" value="SLOT_ALREADY_ASSIGNED"/>
+            <column name="module" value="CORE"/>
+            <column name="message" value="Irrigation slot already assigned at this time"/>
+            <column name="lang" value="EN"/>
+            <column name="type" value="BACK_END"/>
+        </insert>
+
+        <insert tableName="locale_message">
+            <column name="code" value="CROP_ALREADY_ASSIGNED"/>
+            <column name="module" value="CORE"/>
+            <column name="message" value="Crop already assigned to this plot at this period"/>
+            <column name="lang" value="EN"/>
+            <column name="type" value="BACK_END"/>
+        </insert>
 
     </changeSet>
 

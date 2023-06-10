@@ -1,22 +1,20 @@
 package com.digitalfactory.plotirrigationservice.service;
 
+import com.digitalfactory.automaticirrigationsystem.enums.IrrigationStatus;
 import com.digitalfactory.baseservice.service.MessageService;
+import com.digitalfactory.baseservice.util.CoreMessageConstants;
 import com.digitalfactory.plotirrigationservice.dao.PlotIrrigationSlotDao;
 import com.digitalfactory.plotirrigationservice.dto.PlotCropDto;
 import com.digitalfactory.plotirrigationservice.dto.PlotIrrigationSlotDto;
 import com.digitalfactory.plotirrigationservice.model.PlotIrrigationSlot;
 import com.digitalfactory.plotirrigationservice.transformer.PlotIrrigationSlotTransformer;
 import com.digitalfactory.plotirrigationservice.validator.PlotIrrigationSlotValidator;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityExistsException;
 import javax.transaction.Transactional;
-
-import com.digitalfactory.automaticirrigationsystem.enums.IrrigationStatus;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -48,7 +46,7 @@ public class PlotIrrigationSlotServiceImpl implements PlotIrrigationSlotService{
         entity.setPlotCrop(plotCropService.findEntityById(dto.getPlotCropId()).get());
         entity.setIrrigationStatus(IrrigationStatus.PENDING);
         if (plotIrrigationSlotValidator.isExists(dto)) {
-            throw new EntityExistsException("Plot Irrigation slot already assigned at this time.");
+            throw new EntityExistsException(getLocaleMessage(CoreMessageConstants.SLOT_ALREADY_ASSIGNED));
         }
         return entity;
     }
@@ -57,7 +55,7 @@ public class PlotIrrigationSlotServiceImpl implements PlotIrrigationSlotService{
     public PlotIrrigationSlot doBeforeUpdateEntity(PlotIrrigationSlot entity, PlotIrrigationSlotDto dto) {
         dto.setPlotCropId(entity.getPlotCropId());
         if (plotIrrigationSlotValidator.isExistsExcludeId(dto)) {
-            throw new EntityExistsException("Plot Irrigation slot already assigned at this time.");
+            throw new EntityExistsException(CoreMessageConstants.SLOT_ALREADY_ASSIGNED);
         }
         return entity;
     }

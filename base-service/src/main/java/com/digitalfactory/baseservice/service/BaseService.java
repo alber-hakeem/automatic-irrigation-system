@@ -176,7 +176,7 @@ public interface BaseService<Entity extends BaseEntity, Dto extends BaseDto, Tra
     }
 
     private String getEntityNotFoundExceptionMessage() {
-        return getCurrentEntityName() + getLocaleMessage(CoreMessageConstants.IS_NOT_FOUND);
+        return getCurrentEntityName() + getLocaleMessage(CoreMessageConstants.ITEM_IS_NOT_FOUND);
     }
 
 }

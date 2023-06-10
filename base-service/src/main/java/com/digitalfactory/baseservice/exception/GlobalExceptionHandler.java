@@ -24,6 +24,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 import java.util.NoSuchElementException;
 
@@ -217,6 +218,28 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return buildResponseEntity(this.apiResponseBuilder.buildApiFailureResponse(message,
                 ex.getLocalizedMessage()), NOT_FOUND);
     }
+
+
+    /**
+     * Handle EntityExistsException.
+     * <p>
+     * By default when the DispatcherServlet can't find a handler for a request it sends a 404 response. However if its
+     * property "throwExceptionIfEntityExists" is set to true this exception is raised and may be handled with a
+     * configured HandlerExceptionResolver.
+     *
+     * @param ex
+     * @return the ApiResponse object
+     */
+
+    @ExceptionHandler(EntityExistsException.class)
+    protected ResponseEntity handleEntityNotFound(EntityExistsException ex) {
+        logger.error("Exception Occurred", ex);
+        String message = getLocaleMessage(CoreMessageConstants.ITEM_ALREADY_EXIST);
+        message = String.format(message);
+        return buildResponseEntity(this.apiResponseBuilder.buildApiFailureResponse(message,
+                ex.getLocalizedMessage()), CONFLICT);
+    }
+
 
     /**
      * Handle DataIntegrityViolationException, inspects the cause for different DB causes.

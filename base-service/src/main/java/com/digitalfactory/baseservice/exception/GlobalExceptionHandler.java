@@ -155,7 +155,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(EntityNotFoundException.class)
     protected ResponseEntity handleEntityNotFound(EntityNotFoundException ex) {
         logger.error("Exception Occurred", ex);
-        return buildResponseEntity(this.apiResponseBuilder.buildApiFailureResponse(ex.getLocalizedMessage()), OK);
+        return buildResponseEntity(this.apiResponseBuilder.buildApiFailureResponse(ex.getLocalizedMessage()), NOT_FOUND);
     }
 
     /**

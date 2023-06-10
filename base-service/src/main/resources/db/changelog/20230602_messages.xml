@@ -149,6 +149,14 @@
             <column name="type" value="BACK_END"/>
         </insert>
 
+        <insert tableName="locale_message">
+            <column name="code" value="ITEM_IS_NOT_FOUND"/>
+            <column name="module" value="CORE"/>
+            <column name="message" value="Item is not found"/>
+            <column name="lang" value="EN"/>
+            <column name="type" value="BACK_END"/>
+        </insert>
+
     </changeSet>
 
 </databaseChangeLog>

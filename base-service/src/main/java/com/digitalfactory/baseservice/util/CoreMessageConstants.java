@@ -25,5 +25,6 @@ public interface CoreMessageConstants {
 
 
 
+
     //"Plot Irrigation slot already assigned at this time."
 }

@@ -11,7 +11,6 @@ package com.digitalfactory.plotirrigationservice.service;
 
 import com.digitalfactory.automaticirrigationsystem.enums.IrrigationStatus;
 import com.digitalfactory.plotirrigationservice.dao.PlotIrrigationSlotDao;
-import com.digitalfactory.plotirrigationservice.dao.repo.PlotIrrigationSlotRepo;
 import com.digitalfactory.plotirrigationservice.model.PlotIrrigationSlot;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

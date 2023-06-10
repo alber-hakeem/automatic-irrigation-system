@@ -5,12 +5,11 @@ import com.digitalfactory.baseservice.service.MessageService;
 import com.digitalfactory.plotirrigationservice.dao.CropDao;
 import com.digitalfactory.plotirrigationservice.transformer.CropTransformer;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class CropServiceImpl implements CropService{
+public class CropServiceImpl implements CropService {
 
     private final CropTransformer cropTransformer;
     private final CropDao cropDao;

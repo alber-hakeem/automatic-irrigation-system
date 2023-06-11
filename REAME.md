@@ -59,4 +59,4 @@ mvn test
 ```
 
 ### Postman Collection
-[Link to postman collection](./Irregarion system.postman_collection.json)
+[Link to postman collection](https://github.com/alber85/automatic-irrigation-system/blob/dev/Irregarion%20system.postman_collection.json)

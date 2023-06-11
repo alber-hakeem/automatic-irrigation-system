@@ -1,0 +1,526 @@
+{
+	"info": {
+		"_postman_id": "a46633d8-77f9-4995-a974-6bee16841c9b",
+		"name": "Irregarion system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14576578"
+	},
+	"item": [
+		{
+			"name": "Crop",
+			"item": [
+				{
+					"name": "find crop by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/crop/4",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"crop",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find all crops",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/crop",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"crop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find all crops paginated",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pageNumber\": 1,\r\n    \"pageSize\": 10,\r\n    \"sortingByList\": [\r\n        {\r\n            \"fieldName\": \"id\",\r\n            \"direction\": \"ASC\",\r\n            \"isNumber\": true\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/crop/find-all-paginated",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"crop",
+								"find-all-paginated"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create crop",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Rice222\",\r\n    \"description\": \"Rice is the seed of the grass species Oryza sativa (Asian rice) or less commonly\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/crop",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"crop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update crop",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Rice_updated\",\r\n    \"description\": \"Rice is the seed of the grass species Oryza sativa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/crop/1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"crop",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Plot",
+			"item": [
+				{
+					"name": "find plot by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/plot/1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"plot",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find all plots",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/plot",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"plot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find all plots paginated",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pageNumber\": 1,\r\n    \"pageSize\": 10,\r\n    \"sortingByList\": [\r\n        {\r\n            \"fieldName\": \"id\",\r\n            \"direction\": \"ASC\",\r\n            \"isNumber\": true\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/plot/find-all-paginated",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"plot",
+								"find-all-paginated"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create plot",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Plot6\",\r\n    \"area\": 1200.00,\r\n    \"description\": \"Plot4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/plot",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"plot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update plot",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Plot4\",\r\n    \"area\": 1200.00,\r\n    \"description\": \"Plot4 description\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/plot/1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"plot",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Plot Crop",
+			"item": [
+				{
+					"name": "find plot crop by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/plot-crop/2",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"plot-crop",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find all plots crops",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/plot-crop",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"plot-crop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find all plots crops paginated",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pageNumber\": 1,\r\n    \"pageSize\": 10,\r\n    \"sortingByList\": [\r\n        {\r\n            \"fieldName\": \"id\",\r\n            \"direction\": \"ASC\",\r\n            \"isNumber\": true\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/plot/find-all-paginated",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"plot",
+								"find-all-paginated"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create plot crop",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"plotId\": 1,\r\n    \"cropId\": 4,\r\n    \"startDate\": \"2023-07-21T00:00:00\",\r\n    \"endDate\": \"2023-07-25T00:00:00\",\r\n    \"cultivatedArea\": 100.0,\r\n    \"plotIrrigationSlots\": [\r\n        {\r\n            \"irrigationDate\": \"2023-07-21\",\r\n            \"irrigationStartTime\": \"08:00:00\",\r\n            \"irrigationEndTime\": \"10:00:00\",\r\n            \"amountOfWater\": 2.50,\r\n            \"irrigationStatus\": \"PENDING\"\r\n        },\r\n        {\r\n            \"irrigationDate\": \"2023-07-22\",\r\n            \"irrigationStartTime\": \"11:00:00\",\r\n            \"irrigationEndTime\": \"12:00:00\",\r\n            \"amountOfWater\": 2.50,\r\n            \"irrigationStatus\": \"PENDING\"\r\n        },\r\n        {\r\n            \"irrigationDate\": \"2023-07-23\",\r\n            \"irrigationStartTime\": \"14:00:00\",\r\n            \"irrigationEndTime\": \"16:00:00\",\r\n            \"amountOfWater\": 3.50,\r\n            \"irrigationStatus\": \"PENDING\"\r\n        },\r\n        {\r\n            \"irrigationDate\": \"2023-07-24\",\r\n            \"irrigationStartTime\": \"05:00:00\",\r\n            \"irrigationEndTime\": \"08:00:00\",\r\n            \"amountOfWater\": 4.50,\r\n            \"irrigationStatus\": \"PENDING\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/plot-crop",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"plot-crop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update plot crop",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"creationDate\": \"2024-06-07T02:23:12.5029723\",\r\n    \"lastModificationDate\": \"2024-06-07T02:23:12.5029723\",\r\n    \"markedAsDeleted\": false,\r\n    \"id\": 7,\r\n    \"plotId\": 1,\r\n    \"cropId\": 1,\r\n    \"plot\": {\r\n        \"creationDate\": \"2024-06-06T00:00:00\",\r\n        \"lastModificationDate\": \"2024-06-06T00:00:00\",\r\n        \"markedAsDeleted\": false,\r\n        \"id\": 1,\r\n        \"name\": \"Plot1\",\r\n        \"area\": 200.00,\r\n        \"description\": \"Plot1\"\r\n    },\r\n    \"crop\": {\r\n        \"creationDate\": null,\r\n        \"lastModificationDate\": \"2024-06-06T16:57:27.018914\",\r\n        \"markedAsDeleted\": false,\r\n        \"id\": 1,\r\n        \"name\": \"Rice\",\r\n        \"description\": \"Rice is the seed of the grass species Oryza sativa\"\r\n    },\r\n    \"startDate\": \"2024-08-10T00:00:00\",\r\n    \"endDate\": \"2024-08-25T00:00:00\",\r\n    \"cultivatedArea\": 100.0,\r\n    \"plotIrrigationSlots\": [\r\n        {\r\n            \"creationDate\": \"2024-06-07T02:23:12.5040058\",\r\n            \"lastModificationDate\": \"2024-06-07T02:23:12.5040058\",\r\n            \"markedAsDeleted\": false,\r\n            \"id\": 19,\r\n            \"irrigationDate\": \"2024-06-08\",\r\n            \"irrigationStartTime\": \"08:00:00\",\r\n            \"irrigationEndTime\": \"10:00:00\",\r\n            \"amountOfWater\": 2.50,\r\n            \"irrigationStatus\": \"PENDING\"\r\n        },\r\n        {\r\n            \"creationDate\": \"2024-06-07T02:23:12.5050045\",\r\n            \"lastModificationDate\": \"2024-06-07T02:23:12.5050045\",\r\n            \"markedAsDeleted\": false,\r\n            \"id\": 20,\r\n            \"irrigationDate\": \"2024-06-09\",\r\n            \"irrigationStartTime\": \"11:00:00\",\r\n            \"irrigationEndTime\": \"12:00:00\",\r\n            \"amountOfWater\": 2.50,\r\n            \"irrigationStatus\": \"PENDING\"\r\n        },\r\n        {\r\n            \"creationDate\": \"2024-06-07T02:23:12.5060071\",\r\n            \"lastModificationDate\": \"2024-06-07T02:23:12.5060071\",\r\n            \"markedAsDeleted\": false,\r\n            \"id\": 21,\r\n            \"irrigationDate\": \"2024-06-10\",\r\n            \"irrigationStartTime\": \"14:00:00\",\r\n            \"irrigationEndTime\": \"16:00:00\",\r\n            \"amountOfWater\": 3.50,\r\n            \"irrigationStatus\": \"PENDING\"\r\n        },\r\n        {\r\n            \"creationDate\": \"2024-06-07T02:23:12.5069715\",\r\n            \"lastModificationDate\": \"2024-06-07T02:23:12.5069715\",\r\n            \"markedAsDeleted\": false,\r\n            \"id\": 22,\r\n            \"irrigationDate\": \"2024-06-15\",\r\n            \"irrigationStartTime\": \"05:00:00\",\r\n            \"irrigationEndTime\": \"08:00:00\",\r\n            \"amountOfWater\": 4.50,\r\n            \"irrigationStatus\": \"PENDING\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/plot-crop/7",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"plot-crop",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Plot Crop Slot",
+			"item": [
+				{
+					"name": "find plot crop slot by plot crop id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/api/plot-crop-slot/plot-crop/1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"plot-crop-slot",
+								"plot-crop",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create plot crop slot",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"plotCropId\": 1,\r\n    \"irrigationDate\": \"2023-07-24\",\r\n    \"irrigationStartTime\": \"05:00:00\",\r\n    \"irrigationEndTime\": \"06:00:00\",\r\n    \"amountOfWater\": 2.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/plot-crop-slot",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"plot-crop-slot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update plot crop slot",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"irrigationDate\": \"2023-06-15\",\r\n    \"irrigationStartTime\": \"05:00:00\",\r\n    \"irrigationEndTime\": \"07:00:00\",\r\n    \"amountOfWater\": 3.5,\r\n    \"irrigationStatus\": \"PENDING\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/api/plot-crop-slot/1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"plot-crop-slot",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmYWNldGNoZXItYXV0aGVudGljYXRpb24iLCJpc3MiOiJoZW5yeSIsImlhdCI6MTY4Mzc1MzUyMSwiZW1haWwiOiJhZG1pbkBmYWNldGNoZXIuY29tIn0.-zuUZ___DEU2XBq4lzkdPGisgk67wRpY0EcKQaXr3go",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local",
+			"value": "http://127.0.0.1:8080",
+			"type": "default"
+		}
+	]
+}

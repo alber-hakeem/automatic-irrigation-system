@@ -1,6 +1,7 @@
 # Irrigation System
 
 This project implements an automatic irrigation system for agricultural lands using Spring Boot.
+[Link to high level architecture presentation](https://docs.google.com/presentation/d/1-wCiF4tusz5Y2C6ZnT6wd7wRy3OOJi3n9OdK3JYB0Rg/edit?usp=sharing)
 
 ## Requirements
 
@@ -56,3 +57,6 @@ To run the unit tests, use the following command:
 ```bash
 mvn test
 ```
+
+### Postman Collection
+[Link to postman collection](./Irregarion system.postman_collection.json)
